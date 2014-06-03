@@ -17,9 +17,11 @@ module.exports = function (app) {
     });
     
     app.post('/signup', function (req, res) {
+        req.session.messages= [];
         var newUser = new User({  username : req.body.username,
                                   password : req.body.password
                               });
+        console.log(newUser);
         newUser.save();
         res.redirect('/profile');
     });

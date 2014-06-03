@@ -13,8 +13,9 @@ module.exports = function (app) {
      */
     app.get('/login', function (req, res) {
 
+        //console.log(req);
         //Include any error messages that come from the login process.
-        model.messages = req.flash('error');
+        model.messages = req.session.messages;
         res.render('login', model);
     });
 
@@ -26,12 +27,18 @@ module.exports = function (app) {
      * Failed authentications will go back to the login page with a helpful error message to be displayed.
      */
     app.post('/login', function (req, res) {
+        req.session.messages= []
         passport.authenticate('local', {
             successRedirect: req.session.goingTo || '/profile',
             failureRedirect: '/login',
+            failureMessage: "Invalid username or password",
             failureFlash: true
-        })(req, res);
-
+        })(req,res);
+        if (req.body.remember) {
+          req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 14;
+        } else {
+          req.session.cookie.expires = false;
+        }
     });
 
     /**

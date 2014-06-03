@@ -1,37 +1,35 @@
 {>"layouts/master" /}
-
-{>"layouts/master" /}
-
 {<body}
-    <div>
-        <form id="signUpForm" method="post">
-            <fieldset>
-                <h2>Sign Up</h2>
-                <table>
-                    <tr>
-                        <td><label for="username">Username: </label></td>
-                        <td><input id="username" name="username" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td><label for="password">Password: </label></td>
-                        <td><input id="password" name="password" type="password"/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" value="Sign Up"/>
-                            <input type="hidden" name="_csrf" value="{_csrf}"/>
-                        </td>
-                    </tr>
-                </table>
-                {?messages}
-                    <ul>
-                        {#messages}
-                            <li>{.}</li>
-                        {/messages}
 
-                    </ul>
-                {/messages}
-            </fieldset>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <form class="form-signin" role="form" method="post">
+        <h2 class="text-center">Sign Up</h2>
+        <input name="username" type="text" class="form-control" placeholder="Username" required autofocus/>
+        <input name="em" type="email" class="form-control" placeholder="Email address" required>
+        <input name="password" id="password" type="password" class="form-control" placeholder="Password" required>
+        <div class="meter">
+            <div class="bar" id="strengthbar1"></div>
+            <div class="bar" id="strengthbar2"></div>
+            <div class="bar" id="strengthbar3"></div>
+            <div class="bar" id="strengthbar4"></div>
+        </div>
+        <input type="hidden" name="_csrf" value="{_csrf}"/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+      </form>
+      <p></p>
+      <div class="row">
+      {?messages}
+        {#messages}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Error!</strong> {.}
+        </div>
+        {/messages}
+      {/messages}</div>
     </div>
+</div>
+<script src="js/zxcvbn-async.js"></script>
+<script src="js/pwdbar.js"></script>
 {/body}

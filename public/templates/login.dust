@@ -1,34 +1,29 @@
 {>"layouts/master" /}
-
 {<body}
-    <div>
-        <form id="loginForm" method="post">
-            <fieldset>
-                <h2>Login</h2>
-                <table>
-                    <tr>
-                        <td><label for="username">Login: </label></td>
-                        <td><input id="username" name="username" type="text"/></td>
-                    </tr>
-                    <tr>
-                        <td><label for="password">Password: </label></td>
-                        <td><input id="password" name="password" type="password"/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" value="Login"/>
-                            <input type="hidden" name="_csrf" value="{_csrf}"/>
-                        </td>
-                    </tr>
-                </table>
-                {?messages}
-                    <ul>
-                        {#messages}
-                            <li>{.}</li>
-                        {/messages}
-                    </ul>
-                {/messages}
-            </fieldset>
-        </form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <form class="form-signin" role="form" method="post">
+        <h2 class="text-center">Log In</h2>
+        <input name="username" type="text" class="form-control" placeholder="Username" required autofocus/>
+        <input name="password" type="password" class="form-control" placeholder="Password" required/>
+        <label class="checkbox">
+          <input name="remember" type="checkbox" value="true"/> Remember me
+        </label>
+        <input type="hidden" name="_csrf" value="{_csrf}"/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+      <div class="row spacer">
+      {?messages}
+        {#messages}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {.}
+        </div>
+        {/messages}
+      {/messages}
+      </div>
     </div>
+</div>
 {/body}

@@ -6,11 +6,7 @@
     "databaseConfig": {
         "host": "localhost",
         "database": "threewinks"
-    },
-    
-  "bcrypt": {
-        "difficulty": 8
-    }   
+    }
  
 //
 // "i18n": {
