@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "kraken-js": "^0.7.0",
-    "express": "~3.4.4",
+    "express": "~4.17.1",
     "nconf": "^0.6.8",
     "dustjs-helpers": "~1.2.0",
     "dustjs-linkedin": "~2.3.4",
